@@ -2,7 +2,29 @@
 console.log("Up and running!");
 
 //global variables
-var cards = ["queen", "queen", "king", "king"];
+var cards = [
+	{
+		rank: "queen",
+		suit: "hearts",
+		cardImage: "images/queen-of-hearts.png"
+	},
+	{
+		rank: "queen",
+		suit: "diamonds",
+		cardImage: "images/queen-of-diamonds.png"
+	},
+	{
+		rank: "king",
+		suit: "hearts",
+		cardImage: "images/king-of-hearts.png"
+	},
+	{
+		rank: "king",
+		suit: "diamonds",
+		cardImage: "images/king-of-diamonds.png"
+	}
+
+];
 var cardsInPlay = [];
 
 //function which checks for matching cards and alerts
@@ -17,8 +39,10 @@ var checkForMatch = function (){
 
 //function which logs cards in play to console
 var flipCard = function (cardId) {
-	console.log("User flipped a " + cards[cardId]);
-	cardsInPlay.push(cards[cardId]);
+	console.log("User flipped a " + cards[cardId].rank);
+	console.log("The suit is " + cards[cardId].suit);
+	console.log(cards[cardId].cardImage);
+	cardsInPlay.push(cards[cardId].rank);
 
 	if (cardsInPlay.length === 2) {
 		checkForMatch ();
