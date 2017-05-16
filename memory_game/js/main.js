@@ -44,7 +44,7 @@ var flipCard = function () {
 	if (cardsInPlay.length === 2) {
 		checkForMatch ();
 	}
-}
+};
 
 //function to create game board
 var createBoard = function () {
@@ -68,8 +68,18 @@ var checkForMatch = function (){
 		} else {
 			alert("Sorry, try again :(");
 		}
-}
+};
 
 createBoard();
+
+//function to display instructions
+var toggleInstructions = function () {
+	document.getElementsByTagName('p')[0].removeAttribute('class', 'hideInstructions');
+	document.getElementsByTagName('h2')[0].removeAttribute('class', 'hideInstructions');
+};
+
+document.getElementById('displayInstructions').addEventListener('click', toggleInstructions);
+
+
 
 

@@ -75,6 +75,10 @@ footer {
 	font-family: "Raleway", sans-serif;
 }
 
+.hideInstructions {
+	display: none;
+}
+
 .copyright {
 	float: left;
 }
