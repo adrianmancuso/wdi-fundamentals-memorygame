@@ -61,24 +61,52 @@ var createBoard = function () {
 };
 
 //function which checks for matching cards and alerts
-//user if they were successful
+//user if they were successful. Also publishes tally results to page
 var checkForMatch = function (){
 	if (cardsInPlay[0] === cardsInPlay [1]) {
-			alert("You found a match! You win!");
+			var winPlay = confirm("You found a match! You win! Would you like to play again?");
+			tally ++;
+			document.getElementById('counter').textContent += tally;
 		} else {
-			alert("Sorry, try again :(");
+			var losePlay = confirm("Sorry, better luck next time. Would you like to play again?");
 		}
+		
+		if (winPlay === true || losePlay === true) {
+			playAgain();
+		}
+		
 };
 
 createBoard();
 
-//function to display instructions
+//function to toggle instructions
 var toggleInstructions = function () {
-	document.getElementsByTagName('p')[0].removeAttribute('class', 'hideInstructions');
-	document.getElementsByTagName('h2')[0].removeAttribute('class', 'hideInstructions');
+	
+	if ( document.getElementsByTagName('p')[0].classList.contains('instructions') )
+
+		document.getElementsByTagName('p')[0].classList.toggle('hideInstructions');
+
+	if ( document.getElementsByTagName('h2')[0].classList.contains('instructions') )
+
+		document.getElementsByTagName('h2')[0].classList.toggle('hideInstructions');
 };
 
 document.getElementById('displayInstructions').addEventListener('click', toggleInstructions);
+
+var tally = 0;
+
+//reset images and play conditions if user opts to play again
+var playAgain = function (){
+	
+	for (var i = 3; i >= 0; i--) {
+	var board = document.getElementById('game-board');
+	board.removeChild(board.childNodes[i]);
+}
+	createBoard();
+};
+
+
+//to implement: play again button, win counter (multiple games), timing of alert
 
 
 
