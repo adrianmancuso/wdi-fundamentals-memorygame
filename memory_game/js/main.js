@@ -27,8 +27,6 @@ var cards = [
 ];
 var cardsInPlay = [];
 
-
-
 //function which logs cards in play to console
 var flipCard = function () {
 	
@@ -66,7 +64,7 @@ var checkForMatch = function (){
 	if (cardsInPlay[0] === cardsInPlay [1]) {
 			var winPlay = confirm("You found a match! You win! Would you like to play again?");
 			tally ++;
-			document.getElementById('counter').textContent += tally;
+			document.getElementById('counter').textContent = tally;
 		} else {
 			var losePlay = confirm("Sorry, better luck next time. Would you like to play again?");
 		}
@@ -74,8 +72,7 @@ var checkForMatch = function (){
 		if (winPlay === true || losePlay === true) {
 			playAgain();
 		}
-		
-};
+	};
 
 createBoard();
 
@@ -102,11 +99,12 @@ var playAgain = function (){
 	var board = document.getElementById('game-board');
 	board.removeChild(board.childNodes[i]);
 }
+	cardsInPlay = [];
 	createBoard();
 };
 
 
-//to implement: play again button, win counter (multiple games), timing of alert
+//to implement: fix win tally, remove ability to click same card twice (cheater!)
 
 
 
